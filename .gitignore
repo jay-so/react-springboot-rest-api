@@ -59,6 +59,7 @@ out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 react-springboot-rest-api/.idea
+react-springboot-rest-api
 # JIRA plugin
 atlassian-ide-plugin.xml
 
