@@ -23,7 +23,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.wix:wix-embedded-mysql:4.6.1'
 }
 
 tasks.named('test') {
