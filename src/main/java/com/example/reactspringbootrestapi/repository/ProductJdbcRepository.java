@@ -4,12 +4,14 @@ import static com.example.reactspringbootrestapi.JdbcUtil.toLocalDateTime;
 import static com.example.reactspringbootrestapi.JdbcUtil.toUUID;
 import com.example.reactspringbootrestapi.model.Category;
 import com.example.reactspringbootrestapi.model.Product;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -43,7 +45,14 @@ public class ProductJdbcRepository implements ProductRepository {
 
     @Override
     public Optional<Product> findById(UUID productId) {
-        return Optional.empty();
+        try {
+            return Optional.ofNullable(
+                    jdbcTemplate.queryForObject("SELECT * FROM products WHERE product_id = UUID_TO_BIN(:productId)",
+                            Collections.singletonMap("productId", productId.toString().getBytes()), productRowMapper)
+            );
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 
     @Override
@@ -53,7 +62,11 @@ public class ProductJdbcRepository implements ProductRepository {
 
     @Override
     public List<Product> findByCategory(Category category) {
-        return null;
+        return jdbcTemplate.query(
+                "SELECT * FROM products WHERE category = :category",
+                Collections.singletonMap("category", category.toString()),
+                productRowMapper
+        );
     }
 
     @Override
