@@ -58,3 +58,12 @@ annotationProcessor 'org.projectlombok:lombok'
 (https://github.com/flapdoodle-oss/de.flapdoodle.embed.process/issues/118)
 [참고자료 - EmbeddedMySQL공식 레포]
 (https://github.com/wix-incubator/wix-embedded-mysql)
+
+<br/>
+
+## 🧑🏻‍💻 프로텍트 파일
+---
+### 프론트엔드 파일
+[프론트엔드] (https://github.com/jay-so/react-springboot-api-frontend)
+### 백엔드 파일
+[백엔드] (https://github.com/jay-so/react-springboot-rest-api)
