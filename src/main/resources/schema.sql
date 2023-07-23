@@ -1,3 +1,5 @@
+use order_mgmt;
+drop table if exists products;
 CREATE TABLE products
 (
     product_id   BINARY(16) PRIMARY KEY,
