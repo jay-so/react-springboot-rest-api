@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 @ToString
 @EqualsAndHashCode
 public class Email {
-    private String address;
+    private final String address;
 
     public Email(String address) {
         Assert.notNull(address, "address should not be null");
